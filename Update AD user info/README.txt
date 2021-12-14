@@ -1,0 +1,1 @@
+This script is used to bulk update AD users from a CSV file.
