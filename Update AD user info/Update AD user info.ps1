@@ -14,19 +14,8 @@ foreach($user in $userinfo){
 	
 	
     if ($ADUser){
-        Set-ADUser -Identity $ADUser 
-			-Company $user.BusinessUnit 
-			-Department $user.Department 
-			-Title $user.jobtitle 
-			-Office $user.Office 
-			-Manager $user.Manager 
-			-OfficePhone $user.OfficePhone
-			-StreetAddress $user.StreetAddress
-			-City $user.City
-			-State $user.State
-			-PostalCode $user.Zip
-			-Country $user.Country
+        Set-ADUser -Identity $ADUser -Company $user.BusinessUnit -Department $user.Department -Title $user.jobtitle -Office $user.Office -Manager $user.Manager -OfficePhone $user.OfficePhone -StreetAddress $user.StreetAddress -City $user.City -State $user.State -PostalCode $user.Zip -Country $user.Country
     }else{
-        Write-Warning ("Failed to update " + $($user.name))
+        Write-Warning ("Failed to update " + $user.PrimaryEmail)
     }
 }
