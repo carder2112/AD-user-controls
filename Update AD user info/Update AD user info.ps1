@@ -1,6 +1,6 @@
 #This script will update AD user info from a CSV file with these fields populated:
 
-
+Start-Transcript -path "C:\ADupdate\output.txt"
 
 Import-Module ActiveDirectory
 
@@ -55,3 +55,5 @@ foreach($user in $userinfo){
 }
 
 Pause
+
+Stop-Transcript
