@@ -19,3 +19,5 @@ foreach($user in $userinfo){
         Write-Warning ("Failed to update " + $user.PrimaryEmail)
     }
 }
+
+Pause
