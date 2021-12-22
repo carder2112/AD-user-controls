@@ -4,13 +4,13 @@
 
 Import-Module ActiveDirectory
 
-$userinfo = Import-Csv "csv path"
+$userinfo = Import-Csv "C:\ADupdate\SPC.csv"
 
 foreach($user in $userinfo){
 
     # Find user
 	
-    $ADUser = Get-ADUser -Filter "EmailAddress -eq '$user.PrimaryEmail'" -Properties mail
+    $ADUser = Get-ADUser -Filter "EmailAddress -eq '$($user.PrimaryEmail)'" -Properties mail
 	
 	
     if ($ADUser){
