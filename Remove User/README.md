@@ -1,0 +1,1 @@
+This script will disable a users AD account and remove any M365 licenses and distribution groups.
