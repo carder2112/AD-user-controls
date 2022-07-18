@@ -1,10 +1,12 @@
-#This script will update AD user info from a CSV file with these fields populated:
+#This script will update AD user info from a CSV file with these fields populated (see sample CSV file)
+
+#Make sure to update the file paths for the log file and CSV file you want to use.
 
 Start-Transcript -path "C:\ADupdate\output.txt"
 
 Import-Module ActiveDirectory
 
-$userinfo = Import-Csv "C:\ADupdate\SPC.csv"
+$userinfo = Import-Csv "C:\ADupdate\Update07182022.csv"
 
 foreach($user in $userinfo){
 
@@ -30,9 +32,12 @@ foreach($user in $userinfo){
 		}
 		if ($user.Manager) {
 			Set-ADUser -Identity $ADUser -Manager $user.Manager
-		}
+		}  
 		if ($user.OfficePhone) {
 			Set-ADUser -Identity $ADUser -OfficePhone $user.OfficePhone
+		}
+		if ($user.Mobile) {
+			Set-ADUser -Identity $ADUser -Mobile $user.Mobile
 		}
 		if ($user.StreetAddress) {
 			Set-ADUser -Identity $ADUser -StreetAddress $user.StreetAddress
@@ -48,7 +53,7 @@ foreach($user in $userinfo){
 		}
 		if ($user.Country) {
 			Set-ADUser -Identity $ADUser -Country $user.Country
-		}
+		}  
     }else{
         Write-Warning ("Failed to update " + $user.PrimaryEmail)
     }
